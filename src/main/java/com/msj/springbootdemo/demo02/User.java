@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 //属性前缀
 @ConfigurationProperties(prefix = "com")
 //资源文件的位置
-@PropertySource("classpath:/application.properties")
+@PropertySource("classpath:resource.properties")
 public class User {
     private String username;
     private int age;
