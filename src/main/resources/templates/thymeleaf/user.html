@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/static/js/test.js}"></script>
+</head>
+<body>
+<!--姓名：<input  th:id="${user.username}" th:name="${user.username}" th:value="${user.username}" ></br>-->
+<!--年龄：<input th:value="${user.age}"></br>-->
+<!--生日：<input th:value="${#dates.format(user.birthday,'yyyy-MM-dd')}"></br>-->
+
+<div th:object="${user}">
+    姓名：<input  th:id="*{username}" th:name="*{username}" th:value="*{username}" ></br>
+    年龄：<input th:value="*{age}"></br>
+    生日：<input th:value="*{#dates.format(birthday,'yyyy-MM-dd')}"></br>
+</div></br>
+
+<h2>text与utext的区别</h2>
+<div th:text="${user.desc}"></div>
+<div th:utext="${user.desc}"></div>
+<br>
+
+<a th:href="@{http://www.baidu.com}">百度地址</a>
+<br>
+
+<button type="submit" onclick="test()">测试js</button>
+<br>
+
+<form th:action="@{/demo05/success}" th:object="${user}"  th:manifest="post">
+    <input th:field="*{username}">
+    <input th:type="submit">
+</form>
+<br>
+
+<div th:if="${user.getAge() == 18}">18岁</div>
+<div th:if="${user.getAge()} gt 18">大于18</div>
+<div th:if="${user.getAge()} lt 18">小于18</div>
+<br>
+
+<table>
+    <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>生日</th>
+    </tr>
+    <tr th:each="u:${userList}">
+        <th th:text="${u.username}"></th>
+        <th th:text="${u.age}"></th>
+        <th th:text="${#dates.format(u.birthday,'yyyy-MM-dd')}"></th>
+    </tr>
+</table>
+<br>
+</body>
+</html>
