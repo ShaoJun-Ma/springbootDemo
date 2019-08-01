@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+//springboot整合freemarker
 @Controller
 @RequestMapping(value = "/ftl")
 public class UserController03 {
@@ -15,6 +14,6 @@ public class UserController03 {
     @RequestMapping(value = "/index")
     public String index(ModelMap map){
         map.addAttribute("user",user03);
-        return "/index";
+        return "/freemarker/index";
     }
 }
